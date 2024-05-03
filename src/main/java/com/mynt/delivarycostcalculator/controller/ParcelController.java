@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mynt.delivarycostcalculator.dto.CostResponse;
 import com.mynt.delivarycostcalculator.dto.Parcel;
 import com.mynt.delivarycostcalculator.service.ParcelService;
 
@@ -18,9 +19,8 @@ public class ParcelController {
 	private ParcelService parcelService;
 	
     @PostMapping("/calculateCost")
-    public ResponseEntity<Double> calculateDeliveryCost(@RequestBody Parcel parcel) {
-        double volume = parcel.getHeight() * parcel.getWidth() * parcel.getLength();
-        double cost = parcelService.calculateCostBasedOnRules(parcel.getWeight(), volume);
+    public ResponseEntity<CostResponse> calculateDeliveryCost(@RequestBody Parcel parcel) {
+        CostResponse cost = parcelService.calculateCostBasedOnRules(parcel);
         return ResponseEntity.ok(cost);
     }
 

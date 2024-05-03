@@ -2,24 +2,35 @@ package com.mynt.delivarycostcalculator.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.mynt.delivarycostcalculator.dto.CostResponse;
+import com.mynt.delivarycostcalculator.dto.Parcel;
 import com.mynt.delivarycostcalculator.service.ParcelService;
 
 @Service
 public class ParcelServiceImpl implements ParcelService {
 
 	@Override
-	public double calculateCostBasedOnRules(double weight, double volume) {
-        if (weight > 50) {
-            throw new IllegalArgumentException("Parcel weight exceeds 50kg");
-        } else if (weight > 10) {
-            return 20 * weight;
+	public CostResponse calculateCostBasedOnRules(Parcel parcel) {
+        CostResponse response = new CostResponse();
+        double volume = parcel.getHeight() * parcel.getWidth() * parcel.getLength();
+        
+        if (parcel.getWeight() > 50) {
+            response.setRuleName("Reject");
+        } else if (parcel.getWeight() > 10) {
+            response.setRuleName("Heavy Parcel");
+            response.setCost(20 * parcel.getWeight());
         } else if (volume < 1500) {
-            return 0.03 * volume;
+            response.setRuleName("Small Parcel");
+            response.setCost(0.03 * volume);
         } else if (volume < 2500) {
-            return 0.04 * volume;
+            response.setRuleName("Medium Parcel");
+            response.setCost(0.04 * volume);
         } else {
-            return 0.05 * volume;
+            response.setRuleName("Large Parcel");
+            response.setCost(0.05 * volume);
         }
+
+        return response;
 	}
 
 }
