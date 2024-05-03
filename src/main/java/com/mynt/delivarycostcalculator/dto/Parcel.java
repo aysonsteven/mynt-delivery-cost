@@ -7,12 +7,28 @@ public class Parcel {
     private double width;
     private double length;
     
+    private Voucher voucher;
+    
+    
+    
     public Parcel(double weight, double height, double width, double length) {
     	this.weight = weight;
     	this.height = height;
     	this.width = width;
     	this.length = length;
 	}
+    
+    
+	public Voucher getVoucher() {
+		return voucher;
+	}
+
+
+	public void setVoucher(Voucher voucher) {
+		this.voucher = voucher;
+	}
+
+
 	public double getWeight() {
 		return weight;
 	}

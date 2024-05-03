@@ -8,7 +8,7 @@ public class VoucherItem {
 	
 	private double discount;
 	
-	private Date expiry;
+	private String expiry;
 
 	public String getCode() {
 		return code;
@@ -26,11 +26,11 @@ public class VoucherItem {
 		this.discount = discount;
 	}
 
-	public Date getExpiry() {
+	public String getExpiry() {
 		return expiry;
 	}
 
-	public void setExpiry(Date expiry) {
+	public void setExpiry(String expiry) {
 		this.expiry = expiry;
 	}
 	
