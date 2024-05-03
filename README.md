@@ -41,8 +41,33 @@ This Spring Boot application provides an API for calculating the cost of parcel 
 **Response**:
 ```json
 {
-  "code": "VOUCHER123",
-  "discount": 0.1,
-  "description": "10% off on your next purchase"
+    "voucherItem": {
+        "code": "2",
+        "discount": 10.0,
+        "expiry": "2024-05-02T10:21:31.045Z"
+    },
+    "status": null,
+    "isExpired": true
 }
 ```
+
+### 2. Apply Voucher
+
+**Endpoint**: POST /apply
+
+**Description**: Apply a voucher code to get a discount on the delivery cost.
+
+**Request Body**:
+```json
+{
+  "voucherCode": "VOUCHER123",
+  "parcelRequest": {
+    "weight": 5,
+    "height": 10,
+    "width": 20,
+    "length": 30
+  }
+}
+```
+
+
