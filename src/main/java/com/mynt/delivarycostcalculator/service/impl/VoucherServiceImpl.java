@@ -31,12 +31,11 @@ public class VoucherServiceImpl implements VoucherService {
 	@Override
 	public CostResponse applyVoucher(ApplyVoucherRequest voucherRequest) {
 		Voucher voucher = getVoucherDetails(voucherRequest.getCode());
-		if(voucher.getIsExpired()) {
-			throw new ExpiredVoucherException("Voucher is already expired");
-		}
 		CostResponse cost = voucherRequest.getCost();
-		cost.setDiscount(cost.getCost() * PercentageUtil.parsePercent(voucher.getVoucherItem().getDiscount()));
-		cost.setTotalAmount(cost.getCost() - cost.getDiscount());
+		if(!voucher.getIsExpired()) {
+			cost.setDiscount(cost.getCost() * PercentageUtil.parsePercent(voucher.getVoucherItem().getDiscount()));
+			cost.setTotalAmount(cost.getCost() - cost.getDiscount());
+		}
 		return cost;
 	}
 
