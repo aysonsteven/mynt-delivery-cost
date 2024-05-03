@@ -26,7 +26,7 @@ This Spring Boot application provides an API for calculating the cost of parcel 
   "length": 30
 }
 
-### 2. Verify Voucher
+### 1. Verify Voucher
 
 **Endpoint**: GET /verify/{code}
 
