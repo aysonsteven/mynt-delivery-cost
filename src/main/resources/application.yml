@@ -1,0 +1,35 @@
+delivery:
+  rules:
+    heavy:
+      name: 'Heavy Parcel'
+      parcel:
+        cost:
+          factor: 20
+        weight:
+          threshold: 10
+    large:
+      name: 'Large Parcel'
+      parcel:
+        cost:
+          factor: 0.05
+    medium:
+      name: 'Medium Parcel'
+      parcel:
+        cost:
+          factor: 0.04
+        volume:
+          threshold: 2500
+    reject:
+      name: 'Reject'
+      weight:
+        threshold: 50
+    small:
+      name: 'Small Parcel'
+      parcel:
+        cost:
+          factor: 0.03
+        volume:
+          threshold: 1500
+spring:
+  application:
+    name: delivery-calculator
