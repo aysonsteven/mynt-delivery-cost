@@ -8,6 +8,7 @@ import com.mynt.delivarycostcalculator.dto.ApplyVoucherRequest;
 import com.mynt.delivarycostcalculator.dto.CostResponse;
 import com.mynt.delivarycostcalculator.dto.Voucher;
 import com.mynt.delivarycostcalculator.dto.VoucherItem;
+import com.mynt.delivarycostcalculator.exception.ExpiredVoucherException;
 import com.mynt.delivarycostcalculator.service.VoucherService;
 import com.mynt.delivarycostcalculator.utils.DateUtils;
 import com.mynt.delivarycostcalculator.utils.PercentageUtil;
@@ -30,6 +31,9 @@ public class VoucherServiceImpl implements VoucherService {
 	@Override
 	public CostResponse applyVoucher(ApplyVoucherRequest voucherRequest) {
 		Voucher voucher = getVoucherDetails(voucherRequest.getCode());
+		if(voucher.getIsExpired()) {
+			throw new ExpiredVoucherException("Voucher is already expired");
+		}
 		CostResponse cost = voucherRequest.getCost();
 		cost.setDiscount(cost.getCost() * PercentageUtil.parsePercent(voucher.getVoucherItem().getDiscount()));
 		cost.setTotalAmount(cost.getCost() - cost.getDiscount());
