@@ -71,7 +71,7 @@ This Spring Boot application provides an API for calculating the cost of parcel 
 ```
 
 ***Note***:
-I tried using the Voucher Mock API provided. Unfortunately it does not work and it's returning any response.
+I tried using the Voucher Mock API provided. Unfortunately it does not work and it's not returning any response.
 With that i used another mock API using mockapi.io. But I still followed the model based on the swagger.
 
 
