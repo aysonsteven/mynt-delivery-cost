@@ -18,7 +18,7 @@ public class ParcelController {
 	@Autowired
 	private ParcelService parcelService;
 	
-    @PostMapping("/calculateCost")
+    @PostMapping("/cost")
     public ResponseEntity<CostResponse> calculateDeliveryCost(@RequestBody Parcel parcel) {
         CostResponse cost = parcelService.calculateCostBasedOnRules(parcel);
         return ResponseEntity.ok(cost);

@@ -11,9 +11,10 @@ This Spring Boot application provides an API for calculating the cost of parcel 
 
 ## Endpoints
 
+### ParcelController /api/parcel
 ### 1. Calculate Initial Cost
 
-**Endpoint**: POST /calculateCost
+**Endpoint**: POST /cost
 
 **Description**: Calculate the initial cost of parcel delivery.
 
@@ -27,6 +28,7 @@ This Spring Boot application provides an API for calculating the cost of parcel 
 }
 ```
 
+### VoucherController /api/voucher
 ### 1. Verify Voucher
 
 **Endpoint**: GET /verify/{code}
@@ -43,3 +45,4 @@ This Spring Boot application provides an API for calculating the cost of parcel 
   "discount": 0.1,
   "description": "10% off on your next purchase"
 }
+```
