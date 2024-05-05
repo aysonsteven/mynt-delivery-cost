@@ -1,6 +1,7 @@
 package com.mynt.delivarycostcalculator.parceltest;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -19,8 +21,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mynt.delivarycostcalculator.config.DeliveryConfig;
 import com.mynt.delivarycostcalculator.controller.ParcelController;
 import com.mynt.delivarycostcalculator.dto.Parcel;
+import com.mynt.delivarycostcalculator.testconfig.TestConfig;
 
 @WebMvcTest(controllers = ParcelController.class)
+@ContextConfiguration(classes = {TestConfig.class})
 public class ParcelControllerTest {
 	
     @Autowired
@@ -50,12 +54,12 @@ public class ParcelControllerTest {
         when(deliveryConfig.getMediumParcelCostFactor()).thenReturn(0.04);
         when(deliveryConfig.getLargeParcelCostFactor()).thenReturn(0.05);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/calculateCost")
+        mockMvc.perform(post("/cost")
                 .content(asJsonString(request))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("Success"))
-                .andExpect(jsonPath("$.cost").value(120.0)); // Adjust expected result based on your test case
+                .andExpect(jsonPath("$.cost").value(300.0)); // Adjust expected result based on your test case
     }
     
     

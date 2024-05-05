@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mynt.delivarycostcalculator.dto.CostResponse;
 import com.mynt.delivarycostcalculator.dto.Parcel;
 import com.mynt.delivarycostcalculator.service.ParcelService;
+import com.mynt.delivarycostcalculator.service.impl.ParcelServiceImpl;
 
 @RestController
 @RequestMapping("/api/parcel")
 public class ParcelController {
+	
 	
 	@Autowired
 	private ParcelService parcelService;

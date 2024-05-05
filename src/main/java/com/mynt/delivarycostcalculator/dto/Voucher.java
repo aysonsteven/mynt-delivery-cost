@@ -7,6 +7,16 @@ public class Voucher {
 	private String status;
 	
 	private Boolean isExpired;
+	
+	public Voucher(VoucherItem voucherItem, String status, Boolean isExpired) {
+		this.voucherItem = voucherItem;
+		this.status = status;
+		this.isExpired = isExpired;
+	}
+	
+	public Voucher() {
+		
+	}
 
 	public VoucherItem getVoucherItem() {
 		return voucherItem;

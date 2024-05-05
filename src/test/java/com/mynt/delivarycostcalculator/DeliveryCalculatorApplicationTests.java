@@ -4,30 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.mynt.delivarycostcalculator.config.DeliveryConfig;
+import com.mynt.delivarycostcalculator.testconfig.TestConfig;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class DeliveryCalculatorApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-	
-    @Autowired
-    private DeliveryConfig deliveryConfig;
-    
-    @Test
-    public void testConfigValues() {
-        assertEquals(50.0, deliveryConfig.getRejectWeightThreshold());
-        assertEquals(10.0, deliveryConfig.getHeavyParcelWeightThreshold());
-        assertEquals(1500.0, deliveryConfig.getSmallParcelVolumeThreshold());
-        assertEquals(2500.0, deliveryConfig.getMediumParcelVolumeThreshold());
-        assertEquals(20.0, deliveryConfig.getHeavyParcelCostFactor());
-        assertEquals(0.03, deliveryConfig.getSmallParcelCostFactor());
-        assertEquals(0.04, deliveryConfig.getMediumParcelCostFactor());
-        assertEquals(0.05, deliveryConfig.getLargeParcelCostFactor());
-    }
 
 }

@@ -23,7 +23,7 @@ public class VoucherController {
 	private VoucherService voucherService;
 	
     @GetMapping("/verify/{code}")
-    public ResponseEntity<Voucher> calculateDeliveryCost(@PathVariable String code) {
+    public ResponseEntity<Voucher> verifyVoucherDetails(@PathVariable String code) {
         Voucher voucher = voucherService.getVoucherDetails(code);
         return ResponseEntity.ok(voucher);
     }

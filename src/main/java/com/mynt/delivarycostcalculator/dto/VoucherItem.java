@@ -9,6 +9,12 @@ public class VoucherItem {
 	private double discount;
 	
 	private String expiry;
+	
+	public VoucherItem(String code, double discount, String expiry) {
+		this.code = code;
+		this.discount = discount;
+		this.expiry = expiry;
+	}
 
 	public String getCode() {
 		return code;
